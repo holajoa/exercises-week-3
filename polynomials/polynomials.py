@@ -1,4 +1,4 @@
-from numbers import Number
+from numbers import Number, Integral
 
 
 class Polynomial:
@@ -84,6 +84,36 @@ class Polynomial:
     
     def __rmul__(self, other):
         return self * other
+
+    def __pow__(self, n):
+        exp = self
+        if isinstance(n, Integral):
+            for i in range(n-1):
+                exp = exp * self
+            return exp
+        else:
+            raise TypeError
+    
+    def __call__(self, x):
+        f = 0
+        for deg, coeff in enumerate(self.coefficients):
+            f += coeff * x**deg
+        return f
+
+    def dx(self):
+        if len(self.coefficients) > 1:
+            sco = self.coefficients
+            dco = [0] * self.degree()
+            for i in range(self.degree()):
+                dco[i] = (i+1)*sco[i+1]
+            return Polynomial(tuple(dco))
+        elif len(self.coefficients) == 1:
+            return Polynomial((0,))
+
+def derivative(poly):
+    return poly.dx()
+
+
 
 
     
