@@ -88,7 +88,7 @@ class Polynomial:
     def __pow__(self, n):
         exp = self
         if isinstance(n, Integral):
-            for i in range(n-1):
+            for _ in range(n-1):
                 exp = exp * self
             return exp
         else:
