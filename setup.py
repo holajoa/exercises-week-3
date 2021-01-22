@@ -1,12 +1,12 @@
 from setuptools import setup, find_packages
 setup(
-    name='polynomials', 
-    version='0.1', 
-    packages=find_packages(), 
+    name='polynomials',
+    version='0.1',
+    packages=find_packages(),
 )
 
 setup(
-    name='circle', 
-    version='0.1', 
-    packages=find_packages(), 
+    name='circle',
+    version='0.1',
+    packages=find_packages(),
 )

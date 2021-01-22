@@ -14,4 +14,3 @@ class Circle:
             return True if dsq < self.r**2 else False
         else:
             raise IndexError
-        

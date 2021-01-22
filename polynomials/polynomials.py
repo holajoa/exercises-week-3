@@ -55,14 +55,18 @@ class Polynomial:
 
         if isinstance(other, Polynomial):
             common = min(self.degree(), other.degree()) + 1
-            coefs = tuple(a - b for a, b in zip(self.coefficients, other.coefficients))
-            coefs += self.coefficients[common:] + tuple([-c for c in other.coefficients[common:]])
+            coefs = tuple(
+                a - b for a, b
+                in zip(self.coefficients, other.coefficients))
+            coefs += self.coefficients[common:] \
+                + tuple([-c for c in other.coefficients[common:]])
             return Polynomial(coefs)
-        
+
         elif isinstance(other, Number):
-            return Polynomial((self.coefficients[0] - other, ) + self.coefficients[1:])
-        
-        else: 
+            return Polynomial((self.coefficients[0] - other,)
+                              + self.coefficients[1:])
+
+        else:
             return NotImplemented
 
     def __rsub__(self, other):
@@ -81,7 +85,7 @@ class Polynomial:
             return Polynomial(tuple(prod))
         else:
             return NotImplemented
-    
+
     def __rmul__(self, other):
         return self * other
 
@@ -93,7 +97,7 @@ class Polynomial:
             return exp
         else:
             raise TypeError
-    
+
     def __call__(self, x):
         f = 0
         for deg, coeff in enumerate(self.coefficients):
@@ -110,10 +114,6 @@ class Polynomial:
         elif len(self.coefficients) == 1:
             return Polynomial((0,))
 
+
 def derivative(poly):
     return poly.dx()
-
-
-
-
-    
